@@ -42,7 +42,7 @@ const login_routes_1 = __importDefault(require("./ruta/usuarios/login.routes"));
 const tablero_routes_1 = __importDefault(require("./ruta/tablero/tablero.routes"));
 app.use(body_parser_1.default.json({ limit: '500mb' }));
 app.use(body_parser_1.default.urlencoded({ extended: false, limit: '500mb' }));
-app.use(express_1.default.static(path_1.default.join(__dirname, '..', 'images')));
+app.use(express_1.default.static(path_1.default.join(__dirname, '..', 'public')));
 app.use('/usuarios', login_routes_1.default);
 app.use('/tablero', tablero_routes_1.default);
 app.use(function (err, req, res, next) {
