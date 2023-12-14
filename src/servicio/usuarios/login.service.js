@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dbConfig_1 = __importDefault(require("../../config/dbConfig"));
 const mssql_1 = __importDefault(require("mssql"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const auth_1 = require("../../config/auth");
 const saltRounds = 10;
 const hashPassword = (password) => __awaiter(void 0, void 0, void 0, function* () {
     const hashedPassword = yield bcryptjs_1.default.hash(password, saltRounds);
@@ -69,9 +70,12 @@ const login = (correo, password) => __awaiter(void 0, void 0, void 0, function* 
                 data: 'Contraseña incorrecta'
             };
         }
+        const token = (0, auth_1.generarToken)(user);
+        console.log(token);
+        console.log('logeado');
         return {
             isError: false,
-            data: user
+            data: token
         };
     }
     catch (error) {
