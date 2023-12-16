@@ -9,7 +9,7 @@ exports.default = {
     connectionTimeout: 350000,
     options: {
         encrypt: false,
-        enableArithAbort: false,
+        enableArithAbort: false, // Works message gone
         useUTC: true
     },
     pool: {
