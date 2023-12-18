@@ -7,7 +7,7 @@ const app_1 = __importDefault(require("./src/app"));
 const debug_1 = __importDefault(require("debug"));
 const debug = (0, debug_1.default)('ingnoael:server');
 const http_1 = __importDefault(require("http"));
-const port = normalizePort(process.env.PORT || '3500');
+const port = normalizePort(process.env.PORT || '3000');
 app_1.default.set('port', port);
 const server = http_1.default.createServer(app_1.default);
 server.listen(port);
