@@ -54,7 +54,8 @@ const login = (correo, password) => __awaiter(void 0, void 0, void 0, function* 
     try {
         console.log('***** Iniciando sesión *****');
         // Buscar el usuario por correo
-        const queryResult = yield pool.query(`SELECT * FROM usuarios;`);
+        const queryResult = yield pool.query(`SELECT * FROM usuarios where correo = '${correo}' ;`);
+        // console.log(queryResult.rows);
         if (queryResult.rows.length === 0) {
             return {
                 isError: true,
@@ -64,6 +65,8 @@ const login = (correo, password) => __awaiter(void 0, void 0, void 0, function* 
         const user = queryResult.rows[0];
         // Comparar la contraseña ingresada con la almacenada en la base de datos
         const passwordMatch = yield bcryptjs_1.default.compare(password, user.password);
+        // console.log(passwordMatch);
+        // console.log('deiby');
         if (!passwordMatch) {
             return {
                 isError: true,
@@ -71,6 +74,7 @@ const login = (correo, password) => __awaiter(void 0, void 0, void 0, function* 
             };
         }
         const token = (0, auth_1.generarToken)(user);
+        // console.log(token);
         return {
             isError: false,
             message: token

@@ -43,7 +43,10 @@ const addTablero = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const aseo = req.body.aseo;
         const llamada = req.body.llamada;
         const destino = req.body.destino;
-        const response = yield tablero_service_1.default.addTablero(interno, num_habitacion, hora_llegada, aseo, llamada, destino);
+        const fechaActual = new Date();
+        const fechaFormateada = `${fechaActual.getDate()}/${fechaActual.getMonth() + 1}/${fechaActual.getFullYear()}`;
+        console.log(fechaFormateada);
+        const response = yield tablero_service_1.default.addTablero(interno, num_habitacion, hora_llegada, aseo, llamada, destino, fechaFormateada);
         return res.status(200).json(response.data);
     }
     catch (error) {

@@ -44,11 +44,11 @@ const maxhabitaciones = () => __awaiter(void 0, void 0, void 0, function* () {
         throw error;
     }
 });
-const addTablero = (interno, num_habitacion, hora_llegada, aseo, llamada, destino) => __awaiter(void 0, void 0, void 0, function* () {
+const addTablero = (interno, num_habitacion, hora_llegada, aseo, llamada, destino, fecha_llegada) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log('***** Añadiendo datos del tablero *****');
-        const queryResult = yield pool.query(`INSERT INTO tablero (interno, num_habitacion, hora_llegada, aseo, llamada, destino)
-                    VALUES ( '${interno}', ${num_habitacion}, '${hora_llegada}', '${aseo}', '${llamada}', '${destino}'); `);
+        const queryResult = yield pool.query(`INSERT INTO tablero (interno, num_habitacion, hora_llegada, aseo, llamada, destino, fechaLlegada)
+                    VALUES ( '${interno}', ${num_habitacion}, '${hora_llegada}', '${aseo}', '${llamada}', '${destino}', '${fecha_llegada}'); `);
         return {
             isError: false,
             data: queryResult.rows

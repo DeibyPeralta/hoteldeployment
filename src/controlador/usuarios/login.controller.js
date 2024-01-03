@@ -17,8 +17,12 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const correo = req.body.correo;
         const password = req.body.password;
-        const responde = yield login_service_1.default.login(correo, password);
-        return res.status(200).json(responde);
+        const response = yield login_service_1.default.login(correo, password);
+        // console.log(response);
+        if (response.isError == true) {
+            return res.status(500).json(response);
+        }
+        return res.status(200).json(response);
     }
     catch (error) {
         console.log("ERROR ");
